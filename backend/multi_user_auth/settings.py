@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +79,6 @@ WSGI_APPLICATION = 'multi_user_auth.wsgi.application'
 MODE = config('MODE', default=True)
 
 if config('MODE') == 'dev':
-    print('Mode-Dev: 80', MODE)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -156,3 +157,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#Users config
+AUTH_USER_MODEL = 'users.user'

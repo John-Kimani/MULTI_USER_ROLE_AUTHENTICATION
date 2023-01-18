@@ -41,6 +41,8 @@ class CustomUserManager(BaseUserManager):
         
         if extra_fields.get('is_active') is not True:
             raise ValueError(_("The superuser account should have is_active as True."))
+        
+        return self.create_user(email, password, **extra_fields)
     
 
 class User(AbstractUser):
@@ -49,8 +51,6 @@ class User(AbstractUser):
     '''
     username=models.CharField(max_length=255, unique=True)
     email = models.EmailField(max_length=65, unique=True)
-    is_customer = models.BooleanField('Is customer', default=False)
-    is_employee = models.BooleanField('Is employee', default=False)
 
     USERNAME_FIELD='email'
 

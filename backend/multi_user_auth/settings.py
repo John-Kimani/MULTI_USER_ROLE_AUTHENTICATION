@@ -29,6 +29,9 @@ INSTALLED_APPS = [
 
     ##Applications
     "authentication.apps.AuthenticationConfig",
+
+    ##Third-party applications
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

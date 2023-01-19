@@ -27,3 +27,18 @@ class SignUpSerializer(serializers.ModelSerializer):
             raise ValidationError(detail='User with the email provided already exists!')
         
         return super().validate(attrs)
+    
+    def create(self, validated_data):
+        '''
+            Func: Overwrite user creation to enable password hashing
+        '''
+
+        password = validated_data.pop("password")
+
+        user = super().create(validated_data)
+
+        user.set_password(password)
+
+        user.save()
+
+        return user

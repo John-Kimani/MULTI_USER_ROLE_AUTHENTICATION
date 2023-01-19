@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "phonenumber_field",
     'djoser',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

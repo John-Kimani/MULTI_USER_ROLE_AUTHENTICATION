@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     'djoser',
     'drf_yasg',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [

@@ -5,12 +5,12 @@ const path = require('path');
 
 const app = express();
 
+
+//server static files in client/build
+app.use(express.static('client/build'));
 /// Serve index.html (serve wild card route)
 app.get('*', (req, res) => {
-    const myPath = path.resolve(__dirname, 'client', 'build', 'index.html')
-    console.log('__dirname', __dirname);
-    console.log('My path: ', myPath);
-    return res.sendFile(myPath);
+    return res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;

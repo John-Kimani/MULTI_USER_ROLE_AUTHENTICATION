@@ -1,8 +1,10 @@
+import Layout from "components/Layout";
+
 export const RegisterPage = () => {
     return (
-      <div>
+      <Layout title="MultiUser Site | Register" content="Register page">
         <h1>RegisterPage</h1>
-      </div>
+      </Layout>
     );
   };
   

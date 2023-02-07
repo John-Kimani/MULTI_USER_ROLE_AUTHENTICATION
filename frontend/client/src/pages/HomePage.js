@@ -1,8 +1,10 @@
+import Layout from "components/Layout";
+
 export const HomePage = () => {
     return (
-      <div>
+      <Layout title="MultiUser Site | Home" content="Home page">
         <h1>HomePage</h1>
-      </div>
+      </Layout>
     );
   };
   

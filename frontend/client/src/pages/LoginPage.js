@@ -1,8 +1,10 @@
+import Layout from "components/Layout";
+
 export const LoginPage = () => {
     return (
-      <div>
+      <Layout title="MultiUser Site | Login" content="Login page">
         <h1>LoginPage</h1>
-      </div>
+      </Layout>
     );
   };
   

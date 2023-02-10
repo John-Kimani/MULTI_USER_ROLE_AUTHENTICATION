@@ -7,7 +7,6 @@ const router = express.Router();
 router.get('/api/users/me/', async (req, res) => {
     const { access } = req.cookies;
 
-    console.log('Token', access)
 
     try{
         const apiRes = await fetch(`${process.env.API_URL}/api/users/me/`, {
@@ -19,7 +18,6 @@ router.get('/api/users/me/', async (req, res) => {
         });
 
         const data = await apiRes.json();
-        console.log('Data express',data)
 
         return res.status(apiRes.status).json(data)
     }catch(err){

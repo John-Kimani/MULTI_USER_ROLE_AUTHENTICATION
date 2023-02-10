@@ -37,7 +37,6 @@ export const register = createAsyncThunk(
 
 
 const getUser = createAsyncThunk('users/me/', async (_, thunkAPI) => {
-  console.log('Start')
   try{
 
     const res = await fetch('api/users/me/', {

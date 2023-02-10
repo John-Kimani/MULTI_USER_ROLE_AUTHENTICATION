@@ -49,7 +49,7 @@ const getUser = createAsyncThunk('users/me/', async (_, thunkAPI) => {
 
     const  data = await res.json();
 
-    if(res.status == 200){
+    if(res.status === 200){
       return data;
     }else{
       return thunkAPI.rejectWithValue(data);

@@ -1,31 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_URL } from "config/index";
 
 
 export const register = createAsyncThunk(
-  "users/register/",
-  async ({ first_name, last_name, email, password }, thunkAPI) => {
+  "users/register",
+  async ({ email, username, phone_number, password }, thunkAPI) => {
     const body = JSON.stringify({
-      first_name,
-      last_name,
       email,
+      username,
+      phone_number,
       password
     })
 
     try {
-      const res = await fetch(`${API_URL}/api/users/register`, {
+      const res = await fetch('api/users/register/', {
         method: 'POST',
         headers: {
-          Accept: 'applicattion/json',
-          'Content-Type': 'applicaiton/json'
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
         },
-        body
+        body:body,
+
       })
 
       const data = await res.json();
 
       if (res.status === 201){
-        return data
+        return data;
       }else {
         return thunkAPI.rejectWithValue(data);
       }
@@ -55,7 +55,7 @@ const userSlice = createSlice({
   extraReducers: builder => {
     builder
     .addCase(register.pending, state => {
-      return state.loading = true;
+      state.loading = true;
     })
     .addCase(register.fulfilled, state => {
       state.loading = false;

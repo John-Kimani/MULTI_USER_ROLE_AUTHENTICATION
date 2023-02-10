@@ -10,13 +10,13 @@ export const RegisterPage = () => {
   const { registered, loading } = useSelector((state) => state.user);
 
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
     email: "",
+    username: "",
+    phone_number: "",
     password: "",
   });
 
-  const { first_name, last_name, email, password } = formData;
+  const { email, username, phone_number, password } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,7 +25,10 @@ export const RegisterPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(register({ first_name, last_name, email, password }));
+    console.log('Register', email, username, phone_number, password)
+
+
+    dispatch(register({ email, username, phone_number, password }));
   };
 
   if (registered) return <Navigate to="/login" />;
@@ -34,35 +37,7 @@ export const RegisterPage = () => {
     <Layout title="MultiUser Site | Register" content="Register page">
       <h1>Register and Account</h1>
       <form className="mt-5" onSubmit={onSubmit}>
-        <div className="form-group">
-          <lable className="form-label" htmlFor="first_name">
-            First Name
-          </lable>
-          <input
-            className="form-control"
-            type="text"
-            name="first_name"
-            onChange={onChange}
-            value={first_name}
-            required
-          />
-        </div>
-
-        <div className="form-group mt-3">
-          <lable className="form-label" htmlFor="last_name">
-            Last Name
-          </lable>
-          <input
-            className="form-control"
-            type="text"
-            name="last_name"
-            onChange={onChange}
-            value={last_name}
-            required
-          />
-        </div>
-
-        <div className="form-group mt-3">
+      <div className="form-group mt-3">
           <lable className="form-label" htmlFor="email">
             Email
           </lable>
@@ -72,6 +47,33 @@ export const RegisterPage = () => {
             name="email"
             onChange={onChange}
             value={email}
+            required
+          />
+        </div>
+
+        <div className="form-group mt-3">
+          <lable className="form-label" htmlFor="last_name">
+            Username
+          </lable>
+          <input
+            className="form-control"
+            type="text"
+            name="username"
+            onChange={onChange}
+            value={username}
+            required
+          />
+        </div>
+
+        <div className="form-group mt-3">
+          <lable className="form-label" htmlFor="email">
+            Phone Number
+          </lable>
+          <input
+            className="form-control"
+            name="phone_number"
+            onChange={onChange}
+            value={phone_number}
             required
           />
         </div>

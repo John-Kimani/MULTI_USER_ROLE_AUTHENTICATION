@@ -21,6 +21,7 @@ I've always been fascinated by how applications with multiple user roles and per
 ##### Frontend
 - Javascript
 - Node
+- Express
 - Redux
 
 ### How to install this project
@@ -103,21 +104,34 @@ Move back to projects root folder _MULTI_USER_ROLE_AUTHENTICATION_
 ```
 
 ### Frontend
-Navigate into the **frontend** folder to set up the client-side server.
+
+An expressJs server engine is used to handle and fix CORS related issues during development by technically having the client app rendered and sending requests from a proxy host.
+
+From base folder navigate into frontend folder.
+
 ``` bash
     cd frontend
 ```
 
-To install requireed package dependancies run;
+To install required package dependancies run;
 
 ```
     npm install
 ```
 
-From base folder navigate into frontend folder.
+
+Navigate into the **frontend** folder to set up the client-side server.
+
+frontend/client
 
 ```
-    cd frontend
+    cd client
+```
+
+Install required package for the SPA application dependancies run;
+
+```
+    npm install
 ```
 
 

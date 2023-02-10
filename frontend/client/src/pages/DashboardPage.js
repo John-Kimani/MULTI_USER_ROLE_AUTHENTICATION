@@ -9,7 +9,7 @@ export const DashboardPage = () => {
 
   return (
     <Layout title="MultiUser Site | Dashboard" content="Dashboard page">
-      {loading && user === null ? (
+      {loading || user === null ? (
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>

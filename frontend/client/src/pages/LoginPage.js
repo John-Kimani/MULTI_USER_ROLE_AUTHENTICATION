@@ -7,7 +7,7 @@ import Layout from "components/Layout";
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
-  const { loading, isAuthenticated } = useSelector(state => state.user);
+  const { loading, isAuthenticated, registered } = useSelector(state => state.user);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -15,8 +15,9 @@ export const LoginPage = () => {
   });
 
   useEffect(() => {
-    dispatch(resetRegistered());
-  })
+
+    if(registered){dispatch(resetRegistered())};
+  }, [registered])
 
   const { email,password } = formData;
 

@@ -1,5 +1,7 @@
 const express = require('express');
 
+const cookieParser = require('cookie-parser');
+
 //configure base directory path using npm module path to get absolute path
 const path = require('path');
 
@@ -8,13 +10,18 @@ require('dotenv').config();
 
 
 const registerRoute = require('./routes/auth/register');
+const loginRoute = require('./routes/auth/login');
+const meRoute = require('./routes/auth/me');
 
 const app = express();
 
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(registerRoute);
+app.use(loginRoute);
+app.use(meRoute);
 
 //server static files in client/build
 app.use(express.static('client/build'));

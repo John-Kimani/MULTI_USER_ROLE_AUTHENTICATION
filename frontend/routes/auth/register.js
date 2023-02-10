@@ -3,18 +3,19 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const router = express.Router();
 
-router.post('/api/users/register', async (req, res) => {
-    const { first_name, last_name, email, password } = req.body;
+router.post('/api/users/register/', async (req, res) => {
+
+    const { email, username, phone_number, password } = req.body;
 
     const body = JSON.stringify({
-        first_name,
-        last_name,
         email,
-        password
+        username,
+        phone_number,
+        password,
     })
 
     try {
-        const registerRes = await fetch(`${process.env.API_URL}/api/user/register`, {
+        const registerRes = await fetch(`${process.env.API_URL}/api/users/register/`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",

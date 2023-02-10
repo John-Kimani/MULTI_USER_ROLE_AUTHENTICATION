@@ -22,6 +22,8 @@ router.post('/api/users/login/', async (req, res) => {
 
         const data = await apiRes.json();
 
+        console.log('Login', data)
+
         if (apiRes.status === 200) {
             res.setHeader('Set-Cookie', [
                 cookie.serialize('access', data.access, {

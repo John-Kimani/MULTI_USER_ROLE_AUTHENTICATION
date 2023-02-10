@@ -1,12 +1,13 @@
 import { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Navigate } from "react-router-dom";
 import { resetRegistered, login } from "features/user";
 import Layout from "components/Layout";
 
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
-  const { loading } = useSelector(state => state.user);
+  const { loading, isAuthenticated } = useSelector(state => state.user);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -29,6 +30,8 @@ export const LoginPage = () => {
     dispatch(login({email, password}));
 
   };
+
+  if (isAuthenticated) return <Navigate to='/dashboard' />;
     return (
       <Layout title="MultiUser Site | Login" content="Login page">
          <h1>Log into your Account</h1>

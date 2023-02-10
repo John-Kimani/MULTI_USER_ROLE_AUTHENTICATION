@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.http import HttpResponse
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.request import Request
-from .serializers import SignUpSerializer
+from .serializers import SignUpSerializer, UserSerializer
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.views import APIView
 
@@ -38,6 +38,15 @@ class SignUpUserView(generics.GenericAPIView):
         
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
+class RetrieveUserView(APIView):
+  permission_classes = [permissions.IsAuthenticated]
+
+  def get(self, request):
+    user = request.user
+    user = UserSerializer(user)
+
+    return Response(user.data, status=status.HTTP_200_OK)
 
 class LoginView(APIView):
     def post(self, request:Request):
